@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BookStore · SpringBoot </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Book Store</h2>
+        <p class="lead">Simple CRUD JEE webapp made using SpringBoot, Thymeleaf & JPA.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-md-2">
+            <h4 class="mb-3">Add Book</h4>
+
+            <form action="#" th:action="@{/}" th:object="${book}" method="post">
+                <div class="mb-3">
+                    <label for="title">Title</label>
+                    <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Hannibal: Red Dragon">
+                    <div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+                        <span th:errors="*{title}"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" th:field="*{isbn}" class="form-control" id="isbn" placeholder="0-399-12442-X">
+                    <div th:if="${#fields.hasErrors('isbn')}" class="invalid-feedback">
+                        <span th:errors="*{isbn}"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nbOfPages">nb Of Pages</label>
+                    <input type="number" th:field="*{nbOfPages}" class="form-control" id="nbOfPages" placeholder="348">
+                    <div th:if="${#fields.hasErrors('nbOfPages')}" class="invalid-feedback">
+                        <span th:errors="*{nbOfPages}"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description">Description</label>
+                    <textarea th:field="*{description}" class="form-control" id="description"></textarea>
+                    <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                        <span th:errors="*{description}"></span>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Add Book</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Ensa Khouribga</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+</html>

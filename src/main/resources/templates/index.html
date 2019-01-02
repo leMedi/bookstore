@@ -1,0 +1,81 @@
+
+
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BookStore · SpringBoot </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Book Store</h2>
+        <p class="lead">Simple CRUD JEE webapp made using SpringBoot, Thymeleaf & JPA.</p>
+    </div>
+
+    <div th:switch="${books}">
+            <div th:case="null" class="text-center">
+                <h2>No books yet!</h2>
+                <a href="/new" class="btn btn-primary mt-3">Add Books</a>
+            </div>
+            <div th:case="*">
+                <div class="row mb-3">
+                    <div class="col-sm-8 col-xs-12"><h3>Books List</h3></div>
+                    <div class="col-xs-12 col-sm-4"><a href="/new" class="btn btn-primary float-right">Add Book</a></div>
+                </div>
+                <table  class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>SIBN</th>
+                        <th>Title</th>
+                        <th>description</th>
+                        <th>nbOfPages</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.id}"></td>
+                        <td th:text="${book.isbn}"></td>
+                        <td th:text="${book.title}"></td>
+                        <td th:text="${book.description}"></td>
+                        <td th:text="${book.nbOfPages}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+</html>
